@@ -10,7 +10,7 @@
     - check the s3 bucket name
     - upload a file to s3 bucket directly
 
-![terminal](2023-10-10-terminal.png =100*20)
+![terminal](2023-10-10-terminal.png =100x20)
 
 **Task 2: Create Kinesis Firehose Delivery Stream**
 
