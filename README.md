@@ -9,8 +9,8 @@
 3. Test the credentails works
     - check the s3 bucket name
     - upload a file to s3 bucket directly
-    
-![terminal](2023-10-10-terminal.png)
+
+![terminal](2023-10-10-terminal.png 100x)
 
 **Task 2: Create Kinesis Firehose Delivery Stream**
 
