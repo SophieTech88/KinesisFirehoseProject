@@ -3,6 +3,7 @@
 ## Create a Kinesis Firehose pipeline on AWS console
 
 **Task 1: Authentication for boto3**
+
 Purpose: Set the authentication first,then we can use boto3 to connenct to any resources in AWS in the future. 
 
 1. Create a new User in IAM role with AdministratorAccess permission
