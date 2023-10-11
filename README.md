@@ -3,13 +3,15 @@
 ## Create a Kinesis Firehose pipeline on AWS console
 
 **Task 1: Authentication for boto3**
+Purpose: Set the authentication first,then we can use boto3 to connenct to any resources in AWS in the future. 
 
 1. Create a new User in IAM role with AdministratorAccess permission
 2. Create the credentials and config file under ~/.aws/
 3. Test the credentails works
-    - check the s3 bucket name
+    - create a new s3 bucket
     - upload a file to s3 bucket directly
-<img src="2023-10-10-terminal.png" width="50%">
+    - check the s3 bucket name
+The authentication is set.
 
 **Task 2: Create Kinesis Firehose Delivery Stream**
 
