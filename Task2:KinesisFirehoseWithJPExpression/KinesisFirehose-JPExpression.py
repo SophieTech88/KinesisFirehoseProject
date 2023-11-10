@@ -34,7 +34,7 @@ def put_record(payload = None, streamName=None):
         Record={"Data":json.dumps(payload)}
     )
 
-for i in range(20):
-    streamName = "SophieTech-KinesisFirehose-Demo2"
-    data = get_data()
-    put_record(payload = data, streamName=streamName)
+# for i in range(20):
+#     streamName = "SophieTech-KinesisFirehose-Demo2"
+#     data = get_data()
+#     put_record(payload = data, streamName=streamName)

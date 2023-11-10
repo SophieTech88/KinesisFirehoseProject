@@ -9,11 +9,10 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
 1. Create a new User in IAM role with AdministratorAccess permission
 2. Create the credentials and config file under ~/.aws/
 3. Test the credentails works
-    - create a new s3 bucket
-    - upload a file to s3 bucket directly
-    - check the s3 bucket name
-
-The authentication is set.
+   - create a new s3 bucket
+   - upload a file to s3 bucket directly
+   - check the s3 bucket name
+   - The authentication is set.
 
 **Task 1: Create Kinesis Firehose Delivery Stream**
 
@@ -21,7 +20,7 @@ The authentication is set.
 2. Run a test to send records to Kinesis Firehose, and check the data in S3 bucket
    - Use Fake package to generate data
    - Send the data to the new Kinesis Firehose
-The Kinesis Firehose Delivery Stream works perfectly.
+   - The Kinesis Firehose Delivery Stream works perfectly.
 
 **Task 2: Add dynamic partitioning with JQ Expression for Kinesis Firehose**
 1. Create a Kinesis Firehose delivery stream in AWS console
@@ -29,7 +28,7 @@ The Kinesis Firehose Delivery Stream works perfectly.
 3. Add JQ Expression
 4. Edit output path based on dynamic partitioning
 5. Run a test to send records to Kinesis Firehose, and check the data in S3 bucket
-The Kinesis Firehose Delivery Stream works perfectly.
+   - The Kinesis Firehose Delivery Stream works perfectly.
 
 **Task 3: Add dynamic partitioning with Lambda Function for Kinesis Firehose**
 1. The original data is compressed in gzip
@@ -42,3 +41,6 @@ The Kinesis Firehose Delivery Stream works perfectly.
    - set the s3 error destination like: kinesisfirehose-demo/error/
 5. Run a test to send compressed data to Kinesis Firehose, check the data in s3 bucket
 
+good materials:
+- [Dynamic Partitioning in Kinesis Data Firehose.](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html)
+- [How does the event coming to Lambda from Firehose look like?](https://docs.aws.amazon.com/lambda/latest/dg/services-kinesisfirehose.html)
