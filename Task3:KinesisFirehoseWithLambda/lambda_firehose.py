@@ -44,7 +44,7 @@ def lambda_handler(firehose_records_input, context):
         print("partition_keys: ", partition_keys)
         # Create output Firehose record and add modified payload and record ID to it.
         firehose_record_output = {'recordId': firehose_record_input['recordId'],
-                                  'data': base64.b64encode(item),
+                                  'data': base64.b64encode((item+"\n").encode("utf-8")),
                                   'result': 'Ok',
                                   'metadata': { 'partitionKeys': partition_keys }}
 
