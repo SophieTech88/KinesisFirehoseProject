@@ -14,7 +14,7 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
    - check the s3 bucket name
    - The authentication is set.
 
-[YouTube Video](https://www.youtube.com/watch?v=SYwyHpXaIHg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=2)
+[YouTube Video: Task0](https://www.youtube.com/watch?v=SYwyHpXaIHg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=2)
 
 **Task 1: Create Kinesis Firehose Delivery Stream**
 
@@ -24,7 +24,7 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
    - Send the data to the new Kinesis Firehose
    - The Kinesis Firehose Delivery Stream works perfectly.
 
-[YouTube Video](https://www.youtube.com/watch?v=mFo6bcvfdNY&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=3)
+[YouTube Video: Task1](https://www.youtube.com/watch?v=mFo6bcvfdNY&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=3)
 
 **Task 2: Add dynamic partitioning with JQ Expression for Kinesis Firehose**
 1. Create a Kinesis Firehose delivery stream in AWS console
@@ -34,7 +34,7 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
 5. Run a test to send records to Kinesis Firehose, and check the data in S3 bucket
    - The Kinesis Firehose Delivery Stream works perfectly.
 
-[YouTube Video](https://www.youtube.com/watch?v=DUGLVArexkA&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=4)
+[YouTube Video: Task2](https://www.youtube.com/watch?v=DUGLVArexkA&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=4)
 
 **Task 3: Add dynamic partitioning with Lambda Function for complex data in Kinesis Firehose**
 1. The original data is compressed in gzip
@@ -46,12 +46,12 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
    - set the s3 destination like: kinesisfirehose-demo/data/database/table/year/month/day/hour/
    - set the s3 error destination like: kinesisfirehose-demo/error/
 5. Run a test to send compressed data to Kinesis Firehose, check the data in s3 bucket
-6. good materials:
+6. Good Materials:
 - [Dynamic Partitioning in Kinesis Data Firehose.](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html)
 - [How does the event coming to Lambda from Firehose look like?](https://docs.aws.amazon.com/lambda/latest/dg/services-kinesisfirehose.html)
 - Upload an error_message file, which can help us to understand, when there is an error, how kinesis firehose save the rawData to error path in s3 bucket.
 
-[Youtube video](https://www.youtube.com/watch?v=y5zlwUjcCLg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=5)
+[Youtube video: Task3](https://www.youtube.com/watch?v=y5zlwUjcCLg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=5)
 
 **Task 4: Debug of Size Limitation error in Lambda Function for Kinesis Firehose**
 1. Create a supper great data, but afer compress in gzip, it is super small.

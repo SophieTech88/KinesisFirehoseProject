@@ -6,4 +6,4 @@
 5. Run a test to send records to Kinesis Firehose, and check the data in S3 bucket
    - The Kinesis Firehose Delivery Stream works perfectly.
 
-[YouTube Video](https://www.youtube.com/watch?v=DUGLVArexkA&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=4)
+[YouTube Video: Task2](https://www.youtube.com/watch?v=DUGLVArexkA&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=4)
