@@ -30,7 +30,7 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
 5. Run a test to send records to Kinesis Firehose, and check the data in S3 bucket
    - The Kinesis Firehose Delivery Stream works perfectly.
 
-**Task 3: Add dynamic partitioning with Lambda Function for Kinesis Firehose**
+**Task 3: Add dynamic partitioning with Lambda Function for complex data in Kinesis Firehose**
 1. The original data is compressed in gzip
 2. Create a Lambda function in AWS console
    - decompress the gzip compressed data
@@ -44,4 +44,15 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
 - [Dynamic Partitioning in Kinesis Data Firehose.](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html)
 - [How does the event coming to Lambda from Firehose look like?](https://docs.aws.amazon.com/lambda/latest/dg/services-kinesisfirehose.html)
 - Upload an error_message file, which can help us to understand, when there is an error, how kinesis firehose save the rawData to error path in s3 bucket.
-- []()
+- [Youtube video]()
+
+**Task 4: Debug of Size Limitation error in Lambda Function for Kinesis Firehose**
+1. Create a supper great data, but afer compress in gzip, it is super small.
+- create a function get_size() to check the message size, especially get the real size of dictionary/json data.
+2. Check the error of Lambda function and figure out why it hanppens.
+3. Solve the issue in following steps:
+- Check the size of data pass to lambda function
+- Check the size of total size of multiple records
+- If the total_size is greater than 5 MB, drop the record
+- Re-ingest the dropped records to the same Kinesis Firehose
+- Check the IAM role to get the permission to PutRecord from Lambda Function to Kinesis Firehose
