@@ -1,0 +1,17 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Statement1",
+			"Effect": "Allow",
+			"Action": [
+				"kinesis:PutRecords",
+				"kinesis:PutRecord",
+				"firehose:PutRecord"
+			],
+			"Resource": [
+				"arn:aws:firehose:us-west-2:412229758754:deliverystream/SophieTech-KinesisFirehose-Demo3"
+			]
+		}
+	]
+}

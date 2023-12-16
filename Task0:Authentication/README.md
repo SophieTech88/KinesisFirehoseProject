@@ -10,4 +10,4 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
    - check the s3 bucket name
    - The authentication is set.
 
-[YouTube Video: Task0](https://www.youtube.com/watch?v=SYwyHpXaIHg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=2)
+[YouTube Videow0](https://www.youtube.com/watch?v=SYwyHpXaIHg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=2)

@@ -53,7 +53,7 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
 
 [Youtube video: Task3](https://www.youtube.com/watch?v=y5zlwUjcCLg&list=PLgw2ZWQ-nlFxEkIIPrsKcgppuATaLNh0l&index=5)
 
-**Task 4: Debug of Size Limitation error in Lambda Function for Kinesis Firehose**
+**Task 4: Debug of Size Limitation error in Lambda Function for Kinesis Firehose1**
 1. Create a supper great data, but afer compress in gzip, it is super small.
 - create a function get_size() to check the message size, especially get the real size of dictionary/json data.
 2. Check the error of Lambda function and figure out why it hanppens.
@@ -62,11 +62,15 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
    - Check the size of data pass to lambda function
    - Check the size of total size of multiple records
    - If the total_size is greater than 5 MB, don't append the record to firehose_records_output
-- Error 2 in Kinesis Firehose: One or more record Ids were not returned. Ensure that the Lambda function returns all received record Ids.
+- Error 2 in Kinesis Firehose:[ERROR] One or more record Ids were not returned. Ensure that the Lambda function returns all received record Ids.
 - Solution 2:
    - When we return the records from lambda function back to Kinesis Firehose, we need to check send all records back. But the total memory size of the records exceed the size limitation 6 MB, so for the extra records, we still need to append back the firehose_records_output, but change the status from "Ok" to "Drop".
    - Re-ingest the dropped records to the same Kinesis Firehose
    - Check the IAM role to get the permission to PutRecord from Lambda Function to Kinesis Firehose
+- Error 3 for IAM role permission: [ERROR] ClientError: An error occurred (AccessDeniedException) when calling the PutRecord operation: User: arn:aws:sts::xxx is not authorized to perform: firehose:PutRecord on resource: arn:aws:firehose:us-west-2:xxx because no identity-based policy allows the firehose:PutRecord action.
+- Solution 3:
+   - Add PutRecod permission to Kinesis Firehose to Lambda function role
+   - The pemission is in PutRecordToFirehosePolicy.json file.
 3. Good Materials:
 - [Amazon Kinesis Data Firehose Data Transformation](https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html)
 4. Important points for this size issue:
@@ -76,3 +80,14 @@ Purpose: Set the authentication first,then we can use boto3 to connenct to any r
    - Dropped (the record was dropped intentionally by your processing logic)
    - ProcessingFailed (the record could not be transformed).
    - If a record has a status of Ok or Dropped, Kinesis Data Firehose considers it successfully processed. Otherwise, Kinesis Data Firehose considers it unsuccessfully processed.
+
+**Task 5: Debug of Size Limitation error in Lambda Function for Kinesis Firehose2**
+1. Another important edge case
+- In task 4, we discuss about the 6MB size limitation for request and response between lambda function and Kinesis Firehose. But we still miss one edge case.
+   - What if we only have 1 record, and the compressed record size is less than 6 MB, but the decompressed record size is larger than 6 MB?
+   - What will happen from task4 solution? It is no-ending cycle. The lambda function will try to check the size of the output record and reingest this one record to the Kinesis Firehose by trigger the put_record function again and again.
+- I guess it will cost a lot of money and we never know there is an non-ending event exist when we send a large set of data.
+2. Solution:
+- Not only check the toal_size of all records, but also check the size of each record.
+- When the size of one record is greater than 6 MB (In the code, I love to check 5 MB, leave some space.)
+- Put this one record directly to S3 bucket , following the same order of path in s3.
